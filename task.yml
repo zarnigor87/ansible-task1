@@ -3,4 +3,4 @@
     name: dnf-automatic.timer
     state: started
     enabled: yes 
-    #test
+    #test2
