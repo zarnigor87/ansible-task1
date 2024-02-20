@@ -1,6 +1,50 @@
-- name: enable a timer for dnf-automatic
-  systemd:
-    name: dnf-automatic.timer
-    state: started
-    enabled: yes 
-    #test2
+- hosts: all
+  tasks:
+  - name: Disable SELinux
+    selinux:
+      state: disabled
+
+
+  # yum install httpd -y
+  - name: Istlall Apache
+    yum:
+      name: httpd
+      state: latest
+      
+
+  - name: Start and Enable Apache
+    systemd:
+      name: httpd
+      state: started
+      enabled: yes   
+
+
+  - name: Download Template
+    get_url:
+      url: https://www.free-css.com/assets/files/free-css-templates/download/page296/oxer.zip
+      dest: /var/www/html/oxer.zip
+
+
+  - name: Install unzip -y
+    yum:
+      name: unzip
+      state: latest
+
+  - name: Extract Template 
+    unarchive:
+      src: /var/www/html/oxer.zip
+      dest: /tmp/
+      remote_src: yes
+
+
+  - name: Move Template file to /var/www/html/
+    shell:  "mv /tmp/oxer-html/*  /var/www/html/"
+    args:
+      creates:  /var/www/html/about.html
+      
+    
+    
+
+      
+
+      

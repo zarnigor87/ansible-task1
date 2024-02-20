@@ -1,0 +1,9 @@
+# 1 Create Repo
+# 2 Clone Repo
+# 3 Create VMS
+# 4 Update Inventory File (vi /etc/ansible/hosts)
+# 5 Test Inventory (ansible -m ping all)
+# 6 Write Playbook
+# 7 Test Playbook (ansible-playbook task.yml)
+# 8 Commit Changes
+# 9 Push to GitHub
